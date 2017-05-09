@@ -1,4 +1,4 @@
-FROM php:7.1.0-fpm-alpine
+FROM php:7.1-fpm
 
 RUN pecl channel-update pecl.php.net
 
@@ -11,4 +11,4 @@ COPY . /var/www/html/
 
 EXPOSE 9000
 
-ENTRYPOINT /usr/sbin/php-fpm --nodaemonize
+#ENTRYPOINT /usr/sbin/php-fpm --nodaemonize
