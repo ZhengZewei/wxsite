@@ -9,4 +9,4 @@ COPY . /var/www/html/
 
 EXPOSE 9000
 
-ENTRYPOINT ["/usr/sbin/php-fpm", "-F"]
+ENTRYPOINT "php-fpm -F"
