@@ -9,4 +9,4 @@ COPY . /var/www/html/
 
 EXPOSE 9000
 
-ENTRYPOINT "php-fpm -F"
+ENTRYPOINT /usr/sbin/php-fpm --nodaemonize
