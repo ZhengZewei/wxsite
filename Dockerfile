@@ -14,6 +14,7 @@ ADD __config/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY . /var/www/html/
 
 VOLUME /var/www/html/
+# VOLUME /usr/local/log/
 
 EXPOSE 9000
 
