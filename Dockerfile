@@ -6,16 +6,11 @@ RUN pecl install redis-3.1.0 \
   && pecl install xdebug-2.5.0 \
   && docker-php-ext-enable redis xdebug
 
-# COPY config/php.ini /usr/local/etc/php/
+RUN mkdir -p /app && rm -rf /var/www/html && ln -s /app /var/www/html
 
-# ADD __config/www.conf /usr/local/etc/php-fpm.d/www.conf
-# ADD __config/php-fpm.conf /usr/local/etc/php-fpm.conf
+COPY . /app
+WORKDIR /app
 
-COPY . /var/www/html/
-
-VOLUME /var/www/html/
-# VOLUME /usr/local/log/
-
-EXPOSE 9000
-
-ENTRYPOINT /usr/local/sbin/php-fpm --nodaemonize
+#RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+#   && sed -i 's/variables_order.*/variables_order = "EGPCS"/g' \
+#   /etc/php5/apache2/php.ini
