@@ -7,6 +7,10 @@ RUN pecl install redis-3.1.0 \
   && docker-php-ext-enable redis xdebug
 
 # COPY config/php.ini /usr/local/etc/php/
+
+ADD __config/www.conf /usr/local/etc/php-fpm.d/www.conf
+ADD __config/php-fpm.conf /usr/local/etc/php-fpm.conf
+
 COPY . /var/www/html/
 
 EXPOSE 9000
