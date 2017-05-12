@@ -1,4 +1,4 @@
-FROM php:7.1.0-fpm
+FROM php:7.0-apache
 
 RUN pecl channel-update pecl.php.net
 
@@ -8,8 +8,8 @@ RUN pecl install redis-3.1.0 \
 
 # COPY config/php.ini /usr/local/etc/php/
 
-ADD __config/www.conf /usr/local/etc/php-fpm.d/www.conf
-ADD __config/php-fpm.conf /usr/local/etc/php-fpm.conf
+# ADD __config/www.conf /usr/local/etc/php-fpm.d/www.conf
+# ADD __config/php-fpm.conf /usr/local/etc/php-fpm.conf
 
 COPY . /var/www/html/
 
