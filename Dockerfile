@@ -14,9 +14,9 @@ RUN mkdir -p /app && rm -rf /var/www/html && ln -s /app /var/www/html
 COPY . /app
 WORKDIR /app
 
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
-  && sed -i 's/variables_order.*/variables_order = "EGPCS"/g' \
-  /etc/php5/apache2/php.ini
+# RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+#   && sed -i 's/variables_order.*/variables_order = "EGPCS"/g' \
+#   /etc/php5/apache2/php.ini
 
 # echo '<?php ' > index2.php
 # echo 'define("HOST", "rm-uf68lsw07o293t779o.mysql.rds.aliyuncs.com");' >> index2.php
