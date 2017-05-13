@@ -7,7 +7,7 @@ RUN pecl install redis-3.1.0 \
   && docker-php-ext-enable redis xdebug
 
 RUN docker-php-ext-install pdo_mysql \
-  && docker-php-ext-install gd
+  && docker-php-ext-install mysqli
 
 RUN mkdir -p /app && rm -rf /var/www/html && ln -s /app /var/www/html
 
