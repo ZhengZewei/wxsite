@@ -13,9 +13,11 @@ RUN docker-php-ext-install pdo_mysql \
 
 RUN mkdir -p /app && rm -rf /var/www/html && ln -s /app /var/www/html
 
+RUN a2enmod rewrite
+
 COPY . /app
 WORKDIR /app
 
-# RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
-#   && sed -i 's/variables_order.*/variables_order = "EGPCS"/g' \
-#   /etc/php5/apache2/php.ini
+RUN chown -R www-data:www-data ./
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
