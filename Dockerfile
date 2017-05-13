@@ -1,13 +1,13 @@
 FROM php:7.0-apache
 
-RUN docker-php-ext-install pdo_mysql \
-  && docker-php-ext-install gd
-
 RUN pecl channel-update pecl.php.net
 
 RUN pecl install redis-3.1.0 \
   && pecl install xdebug-2.5.0 \
   && docker-php-ext-enable redis xdebug
+
+RUN docker-php-ext-install pdo_mysql \
+  && docker-php-ext-install gd
 
 RUN mkdir -p /app && rm -rf /var/www/html && ln -s /app /var/www/html
 
