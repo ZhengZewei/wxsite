@@ -1,7 +1,6 @@
 FROM php:7.0-apache
 
-RUN docker-php-ext-install mysqli \
-  && docker-php-ext-install pdo_mysql \
+RUN docker-php-ext-install pdo_mysql \
   && docker-php-ext-install gd
 
 RUN pecl channel-update pecl.php.net
