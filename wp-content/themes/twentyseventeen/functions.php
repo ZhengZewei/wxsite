@@ -564,3 +564,31 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
+
+add_filter('get_header', 'fanly_ssl');
+function fanly_ssl(){
+	if( is_ssl() ){
+		function fanly_ssl_main ($content){
+			$siteurl = get_option('siteurl');
+			$upload_dir = wp_upload_dir();
+			$content = str_replace( 'http:'.strstr($siteurl, '//'), 'https:'.strstr($siteurl, '//'), $content);
+			$content = str_replace( 'http:'.strstr($upload_dir['baseurl'], '//'), 'https:'.strstr($upload_dir['baseurl'], '//'), $content);
+			return $content;
+		}
+		ob_start("fanly_ssl_main");
+	}
+}
+
+add_filter('get_header', 'fanly_ssl');
+function fanly_ssl(){
+	if( is_ssl() ){
+		function fanly_ssl_main ($content){
+			$siteurl = get_option('siteurl');
+			$upload_dir = wp_upload_dir();
+			$content = str_replace( 'http:'.strstr($siteurl, '//'), strstr($siteurl, '//'), $content);
+			$content = str_replace( 'http:'.strstr($upload_dir['baseurl'], '//'), strstr($upload_dir['baseurl'], '//'), $content);
+			return $content;
+		}
+		ob_start("fanly_ssl_main");
+	}
+}
