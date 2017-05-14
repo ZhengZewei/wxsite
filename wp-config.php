@@ -80,8 +80,6 @@ $table_prefix  = 'wx_';
  */
 define('WP_DEBUG', false);
 
-define('FORCE_SSL_ADMIN', true);
-
 /**
  * zh_CN本地化设置：启用ICP备案号显示
  *
