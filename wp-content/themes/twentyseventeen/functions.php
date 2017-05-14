@@ -578,17 +578,3 @@ function fanly_ssl(){
 		ob_start("fanly_ssl_main");
 	}
 }
-
-add_filter('get_header', 'fanly_ssl');
-function fanly_ssl(){
-	if( is_ssl() ){
-		function fanly_ssl_main ($content){
-			$siteurl = get_option('siteurl');
-			$upload_dir = wp_upload_dir();
-			$content = str_replace( 'http:'.strstr($siteurl, '//'), strstr($siteurl, '//'), $content);
-			$content = str_replace( 'http:'.strstr($upload_dir['baseurl'], '//'), strstr($upload_dir['baseurl'], '//'), $content);
-			return $content;
-		}
-		ob_start("fanly_ssl_main");
-	}
-}
